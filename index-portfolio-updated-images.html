@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of Kenny Carmack — visual communication, campaign systems, UI/UX, email, direct mail, brand, and editorial design.">
+  <title>Kenny Carmack — Visual Designer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #ae1c13;
+      --ink: #171717;
+      --muted: #707070;
+      --line: #e8e8e8;
+      --soft: #f5f5f3;
+      --white: #ffffff;
+      --sidebar: 300px;
+      --gutter: clamp(24px, 4vw, 64px);
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--white);
+    }
+
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--ink);
+      font-family: "Inter", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .site-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: var(--sidebar) minmax(0, 1fr);
+    }
+
+    /* LEFT NAV ------------------------------------------------------------ */
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 48px 34px 44px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--white);
+      border-right: 1px solid var(--line);
+      z-index: 10;
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 14px;
+      letter-spacing: .02em;
+    }
+
+    .wordmark::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex: 0 0 auto;
+    }
+
+    .nav {
+      margin-top: auto;
+      margin-bottom: auto;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    .nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 25px;
+    }
+
+    .nav a {
+      position: relative;
+      display: inline-block;
+      font-size: 17px;
+      line-height: 1.2;
+      padding: 2px 0;
+      transition: color .2s ease;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width .2s ease;
+    }
+
+    .nav a:hover::after,
+    .nav a:focus-visible::after { width: 100%; }
+
+    .nav a.active { color: var(--accent); }
+
+    .sidebar-footer {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    /* MAIN ---------------------------------------------------------------- */
+    main { min-width: 0; }
+
+    .hero {
+      min-height: 650px;
+      display: grid;
+      grid-template-columns: minmax(340px, 0.95fr) minmax(460px, 1.15fr);
+      align-items: center;
+      gap: clamp(36px, 6vw, 96px);
+      padding: 24px 0 0 var(--gutter);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .hero-copy {
+      padding: 80px 0;
+      max-width: 650px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      font-weight: 400;
+      font-size: clamp(46px, 5vw, 78px);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+      text-wrap: balance;
+    }
+
+    h1 strong {
+      font-weight: 700;
+      letter-spacing: -0.06em;
+    }
+
+    h1 .soft { color: var(--muted); }
+
+    .intro {
+      max-width: 560px;
+      margin: 28px 0 0;
+      color: #555;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .hero-visual {
+      align-self: stretch;
+      min-height: 626px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 0 0 0 28px;
+      background: var(--soft);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* SHARED SECTION STYLES ----------------------------------------------- */
+    .section {
+      padding: 92px var(--gutter) 112px;
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 24px;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 42px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-kicker {
+      margin: 0 0 9px;
+      color: var(--accent);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(32px, 3.2vw, 50px);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .project-number {
+      font-family: "IBM Plex Mono", monospace;
+      color: var(--accent);
+      font-size: 20px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 9px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 10px;
+      color: #555;
+    }
+
+    .text-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--accent);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      border-bottom: 1px solid rgba(174,28,19,.35);
+      padding-bottom: 3px;
+    }
+
+    .text-link:hover,
+    .text-link:focus-visible { border-bottom-color: var(--accent); }
+
+
+
+    /* CAMPAIGN SYSTEMS ----------------------------------------------------- */
+    .campaign-project + .campaign-project {
+      margin-top: 96px;
+      padding-top: 82px;
+      border-top: 1px solid var(--line);
+    }
+
+    .campaign-intro {
+      display: grid;
+      grid-template-columns: minmax(280px, .72fr) minmax(420px, 1.35fr);
+      gap: clamp(34px, 6vw, 88px);
+      align-items: start;
+      margin-bottom: 34px;
+    }
+
+    .campaign-copy h3 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 2.9vw, 44px);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    .campaign-copy p {
+      margin: 0;
+      max-width: 540px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.72;
+    }
+
+    .campaign-copy .project-number { margin-bottom: 16px; }
+
+    .campaign-callout {
+      padding: 22px 24px;
+      border-left: 2px solid var(--accent);
+      background: #fafaf8;
+      color: #525252;
+      font-size: 14px;
+      line-height: 1.72;
+    }
+
+    .campaign-montage {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .campaign-montage .media-card img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .campaign-subhead {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin: 34px 0 16px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .campaign-subhead h4 {
+      margin: 0;
+      font-size: 21px;
+      letter-spacing: -0.025em;
+    }
+
+    .campaign-subhead p {
+      margin: 0;
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .campaign-email-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .campaign-email-card {
+      min-width: 0;
+    }
+
+    .campaign-email-card .email-preview {
+      height: clamp(360px, 34vw, 520px);
+    }
+
+    .campaign-email-card h5 {
+      margin: 13px 0 0;
+      font-size: 14px;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+    }
+
+    .campaign-email-card .meta {
+      margin-top: 7px;
+      color: var(--accent);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .trifold-feature {
+      margin-top: 34px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .trifold-feature .campaign-subhead {
+      margin: 0 0 16px;
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .trifold-image,
+    .winback-shot {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--soft);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .trifold-image:hover,
+    .trifold-image:focus-visible,
+    .winback-shot:hover,
+    .winback-shot:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 35px rgba(0,0,0,.08);
+    }
+
+    .trifold-image img,
+    .winback-shot img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .winback-campaign + .winback-campaign {
+      margin-top: 34px;
+      padding-top: 30px;
+      border-top: 1px solid var(--line);
+    }
+
+    .winback-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: baseline;
+      margin-bottom: 14px;
+    }
+
+    .winback-head h4 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    .winback-head span {
+      color: var(--muted);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .winback-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      align-items: start;
+    }
+
+    .winback-gallery.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* UI / UX ------------------------------------------------------------- */
+    .ui-project {
+      display: grid;
+      grid-template-columns: minmax(260px, .75fr) minmax(440px, 1.4fr);
+      gap: clamp(34px, 6vw, 90px);
+      align-items: start;
+    }
+
+    .project-copy h3 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 2.6vw, 40px);
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+    }
+
+    .project-copy p {
+      margin: 0;
+      max-width: 500px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .ui-placeholder {
+      min-height: 420px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--soft);
+    }
+
+    .ui-placeholder .window {
+      position: absolute;
+      inset: 9% 7%;
+      padding: 22px;
+      border: 1px solid #d8d8d3;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 18px 50px rgba(0,0,0,.08);
+    }
+
+    .ui-placeholder .bar { width: 38%; height: 13px; background: var(--accent); }
+    .ui-placeholder .line { height: 9px; margin-top: 17px; background: #e4e4df; }
+    .ui-placeholder .line.short { width: 58%; }
+    .ui-placeholder .line.mid { width: 76%; }
+    .ui-placeholder .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:30px; }
+    .ui-placeholder .cards span { aspect-ratio: 1/.76; background:#f4f4f1; border:1px solid #e4e4df; border-radius:6px; }
+
+    /* EMAIL --------------------------------------------------------------- */
+    .email-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(18px, 2.8vw, 34px);
+    }
+
+    .email-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .email-preview {
+      height: clamp(420px, 48vw, 650px);
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--soft);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .email-card a:hover .email-preview,
+    .email-card a:focus-visible .email-preview {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 35px rgba(0,0,0,.08);
+    }
+
+    .email-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .email-card h3 {
+      margin: 18px 0 7px;
+      font-size: 20px;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    .email-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .email-card .meta {
+      margin-top: 12px;
+      color: var(--accent);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    /* GRAPHIC DESIGN ------------------------------------------------------ */
+    .case-study + .case-study {
+      margin-top: 110px;
+      padding-top: 90px;
+      border-top: 1px solid var(--line);
+    }
+
+    .case-intro {
+      display: grid;
+      grid-template-columns: 90px minmax(260px, .72fr) minmax(360px, 1.25fr);
+      gap: clamp(24px, 4vw, 56px);
+      align-items: start;
+      margin-bottom: 38px;
+    }
+
+    .case-intro .project-number { margin: 7px 0 0; }
+
+    .case-copy h3 {
+      margin: 0 0 12px;
+      font-size: clamp(29px, 2.7vw, 42px);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+
+    .case-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.72;
+    }
+
+    .case-note {
+      padding: 22px 24px;
+      border-left: 2px solid var(--accent);
+      background: #fafaf8;
+      color: #525252;
+      font-size: 14px;
+      line-height: 1.72;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .media-grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .media-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--soft);
+    }
+
+    .media-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .media-grid.three .media-card { min-height: 260px; }
+    .media-grid.three .media-card img { aspect-ratio: 4/3; }
+    .media-grid.beat .media-card img { aspect-ratio: 16/11; }
+
+    .video-wrap {
+      margin-top: 18px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #111;
+    }
+
+    .video-ratio {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .video-ratio iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .footer {
+      padding: 54px var(--gutter) 72px;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      color: var(--muted);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+    }
+
+    /* MOBILE -------------------------------------------------------------- */
+    .mobile-header { display: none; }
+
+    @media (max-width: 1100px) {
+      :root { --sidebar: 230px; }
+      .sidebar { padding-left: 32px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-right: var(--gutter);
+        padding-bottom: var(--gutter);
+      }
+
+      .hero-copy { padding: 66px 0 12px; }
+      .hero-visual { min-height: 520px; border-radius: 18px; }
+
+      .section-heading { grid-template-columns: 1fr; gap: 16px; }
+      .campaign-intro { grid-template-columns: 1fr; }
+      .campaign-email-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ui-project { grid-template-columns: 1fr; }
+      .case-intro { grid-template-columns: 70px 1fr; }
+      .case-note { grid-column: 2; }
+      .email-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .email-card:last-child { grid-column: 1 / -1; max-width: calc(50% - 9px); }
+    }
+
+    @media (max-width: 760px) {
+      .site-shell { display: block; }
+      .sidebar { display: none; }
+
+      .mobile-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 17px 20px;
+        background: rgba(255,255,255,.94);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .mobile-header .wordmark { font-size: 12px; }
+
+      .mobile-nav {
+        display: flex;
+        gap: 12px;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 9px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 0 20px 20px;
+        gap: 28px;
+      }
+
+      .hero-copy { padding: 58px 0 0; }
+      h1 { font-size: clamp(42px, 13vw, 64px); }
+      .intro { font-size: 15px; }
+      .hero-visual { min-height: 420px; }
+
+      .section { padding: 66px 20px 80px; }
+      .section-heading { margin-bottom: 30px; }
+      .section-heading h2 { font-size: 34px; }
+
+      .campaign-project + .campaign-project { margin-top: 72px; padding-top: 64px; }
+      .campaign-intro { gap: 24px; }
+      .campaign-montage { grid-template-columns: 1fr; }
+      .campaign-subhead { align-items: start; flex-direction: column; }
+      .campaign-email-grid { grid-template-columns: 1fr; gap: 28px; }
+      .campaign-email-card .email-preview { height: 560px; }
+      .winback-gallery,
+      .winback-gallery.two { grid-template-columns: 1fr; }
+      .winback-head { align-items: flex-start; flex-direction: column; gap: 6px; }
+
+      .email-grid { grid-template-columns: 1fr; gap: 36px; }
+      .email-card:last-child { grid-column: auto; max-width: none; }
+      .email-preview { height: 560px; }
+
+      .case-study + .case-study { margin-top: 76px; padding-top: 70px; }
+      .case-intro { grid-template-columns: 38px 1fr; gap: 16px; }
+      .case-intro .project-number { font-size: 16px; }
+      .case-note { grid-column: 1 / -1; margin-top: 6px; }
+
+      .media-grid,
+      .media-grid.three { grid-template-columns: 1fr; }
+
+      .footer { padding: 42px 20px 60px; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="mobile-header">
+    <a class="wordmark" href="#home">Kenny Carmack</a>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="#campaign-systems">Campaigns</a>
+      <a href="#uiux">UI/UX</a>
+      <a href="#email-design">Email</a>
+      <a href="#graphic-design">Brand</a>
+    </nav>
+  </div>
+
+  <div class="site-shell">
+    <aside class="sidebar">
+      <a class="wordmark" href="#home">Kenny Carmack</a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <ul>
+          <li><a class="active" href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#campaign-systems">Campaign Systems</a></li>
+          <li><a href="#uiux">UI / UX</a></li>
+          <li><a href="#email-design">Email Design</a></li>
+          <li><a href="#graphic-design">Brand / Editorial</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        Selected work<br>
+        Campaigns · UI / UX · Email · Brand
+      </div>
+    </aside>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy" id="about">
+          <h1>
+            <strong>Kenny Carmack</strong>
+            <span class="soft"> is a visual designer focused on clear systems across digital, print, and product experiences.</span>
+          </h1>
+          <p class="intro">
+            I work across campaign systems, UI/UX, email, direct mail, and brand design, with an emphasis on
+            strong hierarchy, repeatable visual systems, and communication that is easy to understand and use.
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/refs/heads/main/headshot.jpg" alt="Portrait of Kenny Carmack">
+        </div>
+      </section>
+
+
+      <section class="section" id="campaign-systems">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">01 / Campaign Systems</p>
+            <h2>Cross-channel visual communication</h2>
+          </div>
+          <p>
+            Professional campaign work for Nature’s Sunshine built to stay coherent as messaging moves
+            across email, direct mail, and related campaign touchpoints.
+          </p>
+        </div>
+
+        <article class="campaign-project" id="made-for-more">
+          <div class="campaign-intro">
+            <div class="campaign-copy">
+              <div class="project-number">01</div>
+              <h3>Made for More</h3>
+              <p>
+                A four-regimen Nature’s Sunshine campaign carried across coordinated email and a trifold
+                direct-mail piece. Each regimen uses its own visual personality while staying connected through
+                a shared campaign structure, typography, product presentation, and messaging system.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Campaign System</span>
+                <span class="tag">Email Design</span>
+                <span class="tag">Direct Mail</span>
+                <span class="tag">Cross-channel</span>
+              </div>
+            </div>
+
+            <div class="campaign-callout">
+              The system needed to support four distinct wellness stories—More Active, More Nourished,
+              More Present, and More Refreshed—without fragmenting the broader campaign identity. The result
+              is a family of pieces that can flex by regimen while remaining visibly connected.
+            </div>
+          </div>
+
+          <div class="campaign-montage" aria-label="Made for More direct mail campaign artwork">
+            <a class="media-card" href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/MadeForMoreDirectMail-1.png" target="_blank" rel="noopener">
+              <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/MadeForMoreDirectMail-1.png" alt="Made for More direct mail campaign artwork 1" loading="lazy">
+            </a>
+            <a class="media-card" href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/MadeForMoreDirectMail-2.png" target="_blank" rel="noopener">
+              <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/MadeForMoreDirectMail-2.png" alt="Made for More direct mail campaign artwork 2" loading="lazy">
+            </a>
+            <a class="media-card" href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/MadeForMoreDirectMail-3.png" target="_blank" rel="noopener">
+              <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/MadeForMoreDirectMail-3.png" alt="Made for More direct mail campaign artwork 3" loading="lazy">
+            </a>
+            <a class="media-card" href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/MadeForMoreDirectMail-4.png" target="_blank" rel="noopener">
+              <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/MadeForMoreDirectMail-4.png" alt="Made for More direct mail campaign artwork 4" loading="lazy">
+            </a>
+          </div>
+
+          <div class="trifold-feature">
+            <div class="campaign-subhead">
+              <h4>Trifold direct mail</h4>
+              <p>
+                The print piece brings all four regimens together in one compact overview, using the same
+                color-coded campaign system to make the full offer easy to scan.
+              </p>
+            </div>
+            <a class="trifold-image" href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/f181744e4f28718627d9754d12dbdf30efa1588b/MadeForMore_3xSumo__Horz_final_270_Page_1.jpg" target="_blank" rel="noopener" aria-label="View the Made for More trifold image">
+              <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/f181744e4f28718627d9754d12dbdf30efa1588b/MadeForMore_3xSumo__Horz_final_270_Page_1.jpg" alt="Made for More trifold direct mail piece" loading="lazy">
+            </a>
+          </div>
+
+          <div class="campaign-subhead">
+            <h4>Four regimens, one email system</h4>
+            <p>
+              Each email adapts the same campaign language to a different regimen while preserving a
+              recognizable family structure across the full set.
+            </p>
+          </div>
+
+          <div class="campaign-email-grid">
+            <article class="campaign-email-card">
+              <a href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/MadeForMore-MoreActive.jpg" target="_blank" rel="noopener">
+                <div class="email-preview">
+                  <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/MadeForMore-MoreActive.jpg" alt="Made for More — More Active email" loading="lazy">
+                </div>
+              </a>
+              <div class="meta">Nature’s Sunshine · Email</div>
+              <h5>More Active</h5>
+            </article>
+
+            <article class="campaign-email-card">
+              <a href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/MadeForMore-MoreNourished.jpg" target="_blank" rel="noopener">
+                <div class="email-preview">
+                  <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/MadeForMore-MoreNourished.jpg" alt="Made for More — More Nourished email" loading="lazy">
+                </div>
+              </a>
+              <div class="meta">Nature’s Sunshine · Email</div>
+              <h5>More Nourished</h5>
+            </article>
+
+            <article class="campaign-email-card">
+              <a href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/MadeForMore-MorePresent.jpg" target="_blank" rel="noopener">
+                <div class="email-preview">
+                  <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/MadeForMore-MorePresent.jpg" alt="Made for More — More Present email" loading="lazy">
+                </div>
+              </a>
+              <div class="meta">Nature’s Sunshine · Email</div>
+              <h5>More Present</h5>
+            </article>
+
+            <article class="campaign-email-card">
+              <a href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/MadeForMore-MoreRefreshed.jpg" target="_blank" rel="noopener">
+                <div class="email-preview">
+                  <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/MadeForMore-MoreRefreshed.jpg" alt="Made for More — More Refreshed email" loading="lazy">
+                </div>
+              </a>
+              <div class="meta">Nature’s Sunshine · Email</div>
+              <h5>More Refreshed</h5>
+            </article>
+          </div>
+        </article>
+
+        <article class="campaign-project" id="winback">
+          <div class="campaign-intro">
+            <div class="campaign-copy">
+              <div class="project-number">02</div>
+              <h3>Winback Direct Mail</h3>
+              <p>
+                A series of three retention-focused direct-mail pieces created for separate Nature’s Sunshine
+                winback efforts. Presented together, the work shows how the brand can flex across changing
+                offers and campaign contexts while keeping the hierarchy and customer-facing experience consistent.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Direct Mail</span>
+                <span class="tag">Retention</span>
+                <span class="tag">Print Design</span>
+                <span class="tag">Campaign Design</span>
+              </div>
+            </div>
+
+            <div class="campaign-callout">
+              These pieces are grouped as a system rather than isolated postcards: the emphasis is on keeping
+              brand recognition, offer clarity, and scan-friendly structure intact while the specific winback
+              message changes from campaign to campaign.
+            </div>
+          </div>
+
+          <div class="winback-campaign">
+            <div class="winback-head">
+              <h4>August 2023</h4>
+              <span>Winback direct mail</span>
+            </div>
+            <div class="winback-gallery">
+              <a class="winback-shot" href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/Winback-postcard-0823-en_En%20Page%201%20copy.jpg" target="_blank" rel="noopener">
+                <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/Winback-postcard-0823-en_En%20Page%201%20copy.jpg" alt="August 2023 Nature's Sunshine winback postcard artwork, version one" loading="lazy">
+              </a>
+              <a class="winback-shot" href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/Winback-postcard-0823-en_En%20Page%201.jpg" target="_blank" rel="noopener">
+                <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/Winback-postcard-0823-en_En%20Page%201.jpg" alt="August 2023 Nature's Sunshine winback postcard front" loading="lazy">
+              </a>
+              <a class="winback-shot" href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/Winback-postcard-0823-en_En%20Page%202.jpg" target="_blank" rel="noopener">
+                <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/Winback-postcard-0823-en_En%20Page%202.jpg" alt="August 2023 Nature's Sunshine winback postcard reverse" loading="lazy">
+              </a>
+            </div>
+          </div>
+
+          <div class="winback-campaign">
+            <div class="winback-head">
+              <h4>October 2023</h4>
+              <span>Winback direct mail</span>
+            </div>
+            <div class="winback-gallery">
+              <a class="winback-shot" href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/Winback-postcard-1023-en_final_En%20Page%201%20copy%205.jpg" target="_blank" rel="noopener">
+                <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/Winback-postcard-1023-en_final_En%20Page%201%20copy%205.jpg" alt="October 2023 Nature's Sunshine winback postcard front" loading="lazy">
+              </a>
+              <a class="winback-shot" href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/Winback-postcard-1023-en_final_En%20Page%202%20copy%204.jpg" target="_blank" rel="noopener">
+                <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/Winback-postcard-1023-en_final_En%20Page%202%20copy%204.jpg" alt="October 2023 Nature's Sunshine winback postcard reverse, version one" loading="lazy">
+              </a>
+              <a class="winback-shot" href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/Winback-postcard-1023-en_final_En%20Page%202%20copy%205.jpg" target="_blank" rel="noopener">
+                <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/Winback-postcard-1023-en_final_En%20Page%202%20copy%205.jpg" alt="October 2023 Nature's Sunshine winback postcard reverse, version two" loading="lazy">
+              </a>
+            </div>
+          </div>
+
+          <div class="winback-campaign">
+            <div class="winback-head">
+              <h4>November 2023</h4>
+              <span>Winback direct mail</span>
+            </div>
+            <div class="winback-gallery two">
+              <a class="winback-shot" href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/Winback-postcard-1123-en_final_En%20Page%201%20copy%204.jpg" target="_blank" rel="noopener">
+                <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/Winback-postcard-1123-en_final_En%20Page%201%20copy%204.jpg" alt="November 2023 Nature's Sunshine winback postcard front" loading="lazy">
+              </a>
+              <a class="winback-shot" href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/Winback-postcard-1123-en_final_En%20Page%202%20copy%205.jpg" target="_blank" rel="noopener">
+                <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/Winback-postcard-1123-en_final_En%20Page%202%20copy%205.jpg" alt="November 2023 Nature's Sunshine winback postcard reverse" loading="lazy">
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" id="uiux">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">02 / UI &amp; UX</p>
+            <h2>Digital product work</h2>
+          </div>
+          <p>
+            Product and interaction design focused on useful structure, understandable flows,
+            and interfaces that make complex tasks feel simpler.
+          </p>
+        </div>
+
+        <article class="ui-project">
+          <div class="project-copy">
+            <div class="project-number">01</div>
+            <h3>OTGMed</h3>
+            <p>
+              A mobile healthcare concept focused on helping people find urgent medical information
+              and understand what to do next with less friction.
+            </p>
+            <div class="tag-row">
+              <span class="tag">UX Research</span>
+              <span class="tag">UI Design</span>
+              <span class="tag">Prototype</span>
+            </div>
+            <a class="text-link" href="#">Case study coming soon ↗</a>
+          </div>
+
+          <div class="ui-placeholder" aria-label="OTGMed project placeholder">
+            <div class="window">
+              <div class="bar"></div>
+              <div class="line mid"></div>
+              <div class="line"></div>
+              <div class="line short"></div>
+              <div class="cards"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" id="email-design">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">03 / Email Design</p>
+            <h2>Nature’s Sunshine</h2>
+          </div>
+          <p>
+            Selected long-form educational and ecommerce emails created for Nature’s Sunshine.
+            These pieces focus on organizing dense content, product education, and conversion goals
+            into clear, reusable, easy-to-scan layouts.
+          </p>
+        </div>
+
+        <div class="email-grid">
+          <article class="email-card">
+            <a href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/web-12084727.jpg?raw=true" target="_blank" rel="noopener" aria-label="View the full lymphatic system email">
+              <div class="email-preview">
+                <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/web-12084727.jpg" alt="Nature’s Sunshine lymphatic system educational email" loading="lazy">
+              </div>
+            </a>
+            <div class="meta">Nature’s Sunshine · Educational Email</div>
+            <h3>Lymphatic System</h3>
+            <p>
+              A clean, modular educational campaign combining product recommendations, benefit icons,
+              subscription messaging, and long-form wellness content in a restrained visual system.
+            </p>
+          </article>
+
+          <article class="email-card">
+            <a href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/web-12470928.jpg?raw=true" target="_blank" rel="noopener" aria-label="View the full heart health email">
+              <div class="email-preview">
+                <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/web-12470928.jpg" alt="Nature’s Sunshine World Heart Day email" loading="lazy">
+              </div>
+            </a>
+            <div class="meta">Nature’s Sunshine · Editorial / Ecommerce</div>
+            <h3>Heart Health</h3>
+            <p>
+              An editorial product campaign that moves from wellness education into product merchandising
+              and habit-based guidance while maintaining a consistent, easy-to-scan hierarchy.
+            </p>
+          </article>
+
+          <article class="email-card">
+            <a href="https://github.com/AwkwardShuffle/AwkwardShuffle.github.io/blob/main/PowerBalanceEducationalEmail1.jpg?raw=true" target="_blank" rel="noopener" aria-label="View the full Power Balance email">
+              <div class="email-preview">
+                <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/PowerBalanceEducationalEmail1.jpg" alt="Nature’s Sunshine Power Balance educational email" loading="lazy">
+              </div>
+            </a>
+            <div class="meta">Nature’s Sunshine · Campaign Design</div>
+            <h3>Power Balance</h3>
+            <p>
+              A denser promotional and educational campaign using statistics, benefit modules, product
+              storytelling, scientific context, and testimonials to organize a large amount of information.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="graphic-design">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">04 / Brand &amp; Editorial</p>
+            <h2>Brand &amp; editorial work</h2>
+          </div>
+          <p>
+            Selected identity, motion, and editorial projects exploring typography, image-making,
+            systems, and visual storytelling.
+          </p>
+        </div>
+
+        <article class="case-study" id="ratio">
+          <div class="case-intro">
+            <div class="project-number">01</div>
+            <div class="case-copy">
+              <h3>RAT:O / Ratio</h3>
+              <p>
+                A conceptual identity system for Ratio, a fictional design studio. I began with a custom
+                wordmark, then expanded the geometry of the mark into a flexible circuit-board-inspired
+                motif whose dots echo the punctuation and forms within the logo. The system was applied
+                across a branded stationery set to create a cohesive visual language.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Brand Identity</span>
+                <span class="tag">Stationery</span>
+                <span class="tag">Motion Design</span>
+                <span class="tag">After Effects</span>
+              </div>
+            </div>
+            <div class="case-note">
+              The logo animation extends the same idea into motion. Built in After Effects, it plays with
+              shifting proportion and scale to reference the “ratio” concept while keeping the movement
+              playful and visually engaging.
+            </div>
+          </div>
+
+          <div class="media-grid three">
+            <a class="media-card" href="https://mir-s3-cdn-cf.behance.net/project_modules/2800_webp/a0e928143891083.6282e956dfc14.jpg" target="_blank" rel="noopener">
+              <img src="https://mir-s3-cdn-cf.behance.net/project_modules/2800_webp/a0e928143891083.6282e956dfc14.jpg" alt="Ratio branding and stationery project image" loading="lazy">
+            </a>
+            <a class="media-card" href="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/8b8c58143891083.6282e956e0414.png" target="_blank" rel="noopener">
+              <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/8b8c58143891083.6282e956e0414.png" alt="Ratio brand identity detail" loading="lazy">
+            </a>
+            <a class="media-card" href="https://mir-s3-cdn-cf.behance.net/project_modules/2800_webp/8f65a4143891083.6282e956df66a.png" target="_blank" rel="noopener">
+              <img src="https://mir-s3-cdn-cf.behance.net/project_modules/2800_webp/8f65a4143891083.6282e956df66a.png" alt="Ratio stationery mockup" loading="lazy">
+            </a>
+          </div>
+
+          <div class="video-wrap">
+            <div class="video-ratio">
+              <iframe src="https://player.vimeo.com/video/390630926?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Ratio Logo Animation" allowfullscreen></iframe>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-study" id="beat">
+          <div class="case-intro">
+            <div class="project-number">02</div>
+            <div class="case-copy">
+              <h3>BEAT Magazine</h3>
+              <p>
+                An editorial concept for BEAT, a fictional magazine for drummers, centered on Art Blakey.
+                The visual direction draws from classic Blue Note album covers: bold type, high-contrast
+                photography, and a restrained graphic system. I created a double-exposure portrait in
+                Photoshop and used circular forms throughout the spreads to echo drums and give the layout
+                a consistent visual rhythm.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Editorial Design</span>
+                <span class="tag">Typography</span>
+                <span class="tag">Photoshop</span>
+                <span class="tag">Layout</span>
+              </div>
+            </div>
+            <div class="case-note">
+              The project uses repetition and scale to connect the photography, typography, and circular
+              drum motif, creating an editorial system that feels energetic without losing readability.
+            </div>
+          </div>
+
+          <div class="media-grid beat">
+            <a class="media-card" href="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/21b1f5143889177.6282daf62c0b9.jpg" target="_blank" rel="noopener">
+              <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/21b1f5143889177.6282daf62c0b9.jpg" alt="BEAT magazine Art Blakey editorial spread" loading="lazy">
+            </a>
+            <a class="media-card" href="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/98a7af143889177.6282daf62d1bf.jpg" target="_blank" rel="noopener">
+              <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/98a7af143889177.6282daf62d1bf.jpg" alt="BEAT magazine editorial layout mockup" loading="lazy">
+            </a>
+            <a class="media-card" href="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/fd48cc143889177.6282daf62caa9.jpg" target="_blank" rel="noopener">
+              <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/fd48cc143889177.6282daf62caa9.jpg" alt="BEAT magazine editorial spread with circular motif" loading="lazy">
+            </a>
+            <a class="media-card" href="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/fefed7143889177.6282daf62b723.jpg" target="_blank" rel="noopener">
+              <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/fefed7143889177.6282daf62b723.jpg" alt="BEAT magazine Art Blakey layout detail" loading="lazy">
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <footer class="footer">
+        <span>Kenny Carmack — Visual Designer</span>
+        <span>Campaigns · UI / UX · Email · Brand</span>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
