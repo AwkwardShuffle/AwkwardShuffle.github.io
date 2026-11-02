@@ -139,9 +139,32 @@
       overflow: hidden;
     }
 
+    .hero-inner {
+      width: 100%;
+      display: grid;
+      grid-template-columns: clamp(190px, 17vw, 260px) minmax(0, 850px);
+      gap: clamp(32px, 4.5vw, 72px);
+      align-items: stretch;
+    }
+
+    .hero-headshot {
+      min-height: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--soft);
+    }
+
+    .hero-headshot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
     .hero-copy {
-      padding: 96px 0;
+      padding: 0;
       max-width: 850px;
+      align-self: center;
     }
 
     h1 {
@@ -775,7 +798,11 @@
         padding-bottom: var(--gutter);
       }
 
-      .hero-copy { padding: 66px 0 12px; }
+      .hero-inner {
+        grid-template-columns: clamp(160px, 18vw, 210px) minmax(0, 1fr);
+        gap: clamp(28px, 4vw, 48px);
+      }
+      .hero-copy { padding: 0; }
       .hero-visual { display: none; }
 
       .section-heading { grid-template-columns: 1fr; gap: 16px; }
@@ -820,7 +847,16 @@
         gap: 28px;
       }
 
-      .hero-copy { padding: 58px 0 0; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 26px;
+        padding-top: 58px;
+      }
+      .hero-headshot {
+        width: min(42vw, 180px);
+        aspect-ratio: 4 / 5;
+      }
+      .hero-copy { padding: 0; }
       h1 { font-size: clamp(52px, 15vw, 76px); }
       .intro { font-size: 15px; }
       .hero-visual { display: none; }
@@ -902,10 +938,15 @@
 
     <main>
       <section class="hero" id="home">
-        <div class="hero-copy" id="about">
-          <h1>Kenny Carmack</h1>
-          <p class="hero-subhead">Visual and and Communications Designer</p>
-          <p class="intro">Working primarily in digital marketing, email, print, and UI/UX. I enjoy making complicated information easier to navigate and bringing clarity, personality, and purpose to every design.</p>
+        <div class="hero-inner">
+          <div class="hero-headshot" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/AwkwardShuffle/AwkwardShuffle.github.io/main/headshot.jpg" alt="" fetchpriority="high">
+          </div>
+          <div class="hero-copy" id="about">
+            <h1>Kenny Carmack</h1>
+            <p class="hero-subhead">Visual and and Communications Designer</p>
+            <p class="intro">Working primarily in digital marketing, email, print, and UI/UX. I enjoy making complicated information easier to navigate and bringing clarity, personality, and purpose to every design.</p>
+          </div>
         </div>
       </section>
 
